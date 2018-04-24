@@ -4,10 +4,7 @@
     https://www.interviewcake.com/question/java/reverse-string-in-place
 
     Expected Output:
-    t
-    s
-    e
-    T
+    tseT
 */
 
 public class ReverseStringInPlace {
@@ -23,8 +20,6 @@ public class ReverseStringInPlace {
 
         reverse(inputString);
 
-        for (char c : inputString) {
-            System.out.println(c);
-        }
+        System.out.println(inputString);
     }
 }
