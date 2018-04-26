@@ -5,48 +5,30 @@
 
     Expected Output:
     5 5 5.0 5
-    20 5 12.5 5
-    20 5 15.0 20
+    12 5 8.5 5
+    12 5 9.666666666666666 12
 */
 
-import java.util.Map;
-import java.util.HashMap;
-
 public class TempTracker {
-    private static int n = 0;
-    private static int min = 111;
-    private static int max = -1;
-    private static int sum = 0;
-    private static Integer mode = null;
-    private static int maxCount = 0;
+    static int sum = 0;
+    static int n = 0;
+    static int[] temps = new int[111];
+    static int min = Integer.MAX_VALUE;
+    static int max = Integer.MIN_VALUE;
+    static int mode;
 
-    private static Map<Integer, Integer> temps = new HashMap<>();
+    public static void insert(int i) {
+        min = Math.min(min, i);
+        max = Math.max(max, i);
 
-    public static void insert(int temp) {
+        temps[i]++;
+
+        if (n == 0 || temps[mode] < temps[i]) {
+            mode = i;
+        }
+
+        sum += i;
         n++;
-        sum += temp;
-        int newCount;
-
-        if (temps.containsKey(temp)) {
-            newCount = temps.get(temp) + 1;
-        }
-        else {
-            newCount = 1;
-        }
-
-        temps.put(temp, newCount);
-
-        if (newCount > maxCount) {
-            maxCount = newCount;
-            mode = temp;
-        }
-
-        if (temp > max) {
-            max = temp;
-        }
-        if (temp < min) {
-            min = temp;
-        }
     }
 
     public static int getMax() {
@@ -65,18 +47,16 @@ public class TempTracker {
         return mode;
     }
 
-    public static void printAll() {
+    public static void printData() {
         System.out.println(getMax() + " " + getMin() + " " + getMean() + " " + getMode());
     }
 
     public static void main(String[] args) {
         insert(5);
-        printAll();
-
-        insert(20);
-        printAll();
-
-        insert(20);
-        printAll();
+        printData();
+        insert(12);
+        printData();
+        insert(12);
+        printData();
     }
 }
