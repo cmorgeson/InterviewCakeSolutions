@@ -1,3 +1,11 @@
+/*
+    Problem #31
+    Recursive String Permutations
+    https://www.interviewcake.com/question/java/recursive-string-permutations
+
+    Expected Output:
+    24
+*/
 import java.util.Set;
 import java.util.HashSet;
 
@@ -29,8 +37,6 @@ public class RecursivePermutations {
     public static void main(String[] args) {
         String testInput = "cats";
         Set<String> result = countPerms(testInput);
-        for (String s : result) {
-            System.out.println(s);
-        }
+        System.out.println(result.size());
     }
 }
