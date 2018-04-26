@@ -15,9 +15,9 @@ public class RotationPoint {
         while (low < high) {
             int mid = (high-low)/2 + low;
 
-            if (strings[mid].compareToIgnoreCase(strings[mid-1]) < 0) {
-                // If the current string is lexigraphically less than it's predecessor, it is the pivot.
-                return mid;
+            if (strings[mid].compareToIgnoreCase(strings[mid+1]) > 0) {
+                // If the current string is lexigraphically higher than the string following, the next string is the pivot.
+                return mid+1;
             }
             else if (strings[mid].compareToIgnoreCase(strings[0]) < 0) {
                 high = mid-1;
